@@ -1,20 +1,16 @@
 import React from 'react';
+import { useUrl } from "./useUrl";
 import './App.scss';
 
-const defaults = {
-  url: "https://picsum.photos/id/1084/536/354?grayscale",
-  size: 200
-}
-
-const getUrl = size => `https://picsum.photos/${size}`
-
 function App() {
-  const [size, setSize] = React.useState(defaults.size);
-  const [url, setUrl] = React.useState(defaults.url);
+  const {
+    size,
+    update,
+    url,
+  } = useUrl();
 
   const handleChange = ({ target }) => {
-    setUrl(getUrl(target.value));
-    setSize(target.value);
+    update(target.value);
   }
 
   return (
